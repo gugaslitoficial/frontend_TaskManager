@@ -19,8 +19,6 @@ export default function Home() {
     const [currentDate, setCurrentDate] = useState('');
     const [reminders, setReminders] = useState<any[]>([]);
 
-    const apiBaseUrl = process.env.API_BASE_URL;
-
     const navigate = useNavigate();
 
     const handleAddEventClick = () => {
@@ -29,6 +27,7 @@ export default function Home() {
 
     useEffect(() => {
         // Função para buscar o nome do usuário logado
+        const apiBaseUrl = process.env.API_BASE_URL;
         const fetchUsername = async () => {
             try {
                 const token = localStorage.getItem('accessToken');
@@ -79,6 +78,7 @@ export default function Home() {
         setSuccess('');
 
         const newReminder = { title, date, category, description };
+        const apiBaseUrl = process.env.API_BASE_URL;
         console.log('Submitting:', newReminder);
 
         try {
@@ -135,6 +135,7 @@ export default function Home() {
                 setError('Token não encontrado');
                 return;
             }
+            const apiBaseUrl = process.env.API_BASE_URL;
         
             const response = await fetch(`${apiBaseUrl}/api/reminders/search?title=${query}`, {
                 method: 'GET',

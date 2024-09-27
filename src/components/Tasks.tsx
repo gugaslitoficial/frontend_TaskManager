@@ -13,8 +13,6 @@ interface Task {
 export default function Tasks() {
     const [tasks, setTasks] = useState<Task[]>([]);
 
-    const apiBaseUrl = process.env.API_BASE_URL;
-
     useEffect(() => {
         const fetchTasks = async () => {
             try {
@@ -24,6 +22,7 @@ export default function Tasks() {
                     return;
                 }
 
+                const apiBaseUrl = process.env.API_BASE_URL;
                 const response = await fetch(`${apiBaseUrl}/api/reminders`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -54,6 +53,7 @@ export default function Tasks() {
                 return;
             }
 
+            const apiBaseUrl = process.env.API_BASE_URL;
             const response = await fetch(`${apiBaseUrl}/api/reminders/${id}`, {
                 method: 'DELETE',
                 headers: {

@@ -21,9 +21,8 @@ export default function CalendarComponent() {
     const [events, setEvents] = useState<{ [key: string]: Reminder[] }>({});
     const [selectedDate, setSelectedDate] = useState<Value>(new Date());
 
-    const apiBaseUrl = process.env.API_BASE_URL;
-
     useEffect(() => {
+        const apiBaseUrl = process.env.API_BASE_URL;
         const fetchReminders = async () => {
             try {
                 const token = localStorage.getItem('accessToken');

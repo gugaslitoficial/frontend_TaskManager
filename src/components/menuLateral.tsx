@@ -27,8 +27,6 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
     const [popupVisible, setPopupVisible] = useState(false);
     const [popupPosition, setPopupPosition] = useState<{ top: number; left: number } | null>(null);
 
-    const apiBaseUrl = process.env.API_BASE_URL;
-
     const fetchUserImage = async () => {
         try {
             const token = localStorage.getItem('accessToken');
@@ -37,6 +35,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                 return;
             }
 
+            const apiBaseUrl = process.env.API_BASE_URL;
             const response = await fetch(`${apiBaseUrl}/api/user/image`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -74,6 +73,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                 return;
             }
 
+            const apiBaseUrl = process.env.API_BASE_URL;
             const response = await fetch(`${apiBaseUrl}/api/user/upload-image`, {
                 method: 'POST',
                 headers: {
@@ -98,6 +98,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
     };
 
     useEffect(() => {
+        const apiBaseUrl = process.env.API_BASE_URL;
         const fetchEventReminders = async () => {
             try {
                 const token = localStorage.getItem('accessToken');
@@ -116,7 +117,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                     const data: EventReminder[] = await response.json();
                     const eventReminders = data.filter(reminder => reminder.category === 'Event');
                     setEventTitles(eventReminders);
-                    console.log('Event titles fetched:', eventReminders); // Verifique se os títulos são buscados corretamente
+                    console.log('Event titles fetched:', eventReminders);
                 } else {
                     console.log('Erro ao buscar lembretes');
                 }
@@ -147,6 +148,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                 return;
             }
 
+            const apiBaseUrl = process.env.API_BASE_URL;
             const response = await fetch(`${apiBaseUrl}/api/reminders/${id}`, {
                 method: 'DELETE',
                 headers: {
