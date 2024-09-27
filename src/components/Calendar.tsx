@@ -22,7 +22,7 @@ export default function CalendarComponent() {
     const [selectedDate, setSelectedDate] = useState<Value>(new Date());
 
     useEffect(() => {
-        const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+        const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
         const fetchReminders = async () => {
             try {
                 const token = localStorage.getItem('accessToken');

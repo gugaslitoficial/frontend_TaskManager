@@ -35,7 +35,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                 return;
             }
 
-            const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+            const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
             const response = await fetch(`${apiBaseUrl}/api/user/image`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -73,7 +73,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                 return;
             }
 
-            const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+            const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
             const response = await fetch(`${apiBaseUrl}/api/user/upload-image`, {
                 method: 'POST',
                 headers: {
@@ -98,7 +98,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
     };
 
     useEffect(() => {
-        const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+        const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
         const fetchEventReminders = async () => {
             try {
                 const token = localStorage.getItem('accessToken');
@@ -148,7 +148,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                 return;
             }
 
-            const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+            const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
             const response = await fetch(`${apiBaseUrl}/api/reminders/${id}`, {
                 method: 'DELETE',
                 headers: {

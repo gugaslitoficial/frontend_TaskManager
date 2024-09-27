@@ -22,7 +22,7 @@ export default function Tasks() {
                     return;
                 }
 
-                const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+                const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
                 const response = await fetch(`${apiBaseUrl}/api/reminders`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -53,7 +53,7 @@ export default function Tasks() {
                 return;
             }
 
-            const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+            const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
             const response = await fetch(`${apiBaseUrl}/api/reminders/${id}`, {
                 method: 'DELETE',
                 headers: {

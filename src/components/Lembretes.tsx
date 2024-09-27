@@ -13,7 +13,7 @@ interface Reminder {
 export default function Lembretes() {
     const [reminders, setReminders] = useState<Reminder[]>([]);
 
-    const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
         const fetchReminders = async () => {
@@ -23,7 +23,7 @@ export default function Lembretes() {
                     console.log('Token não encontrado');
                     return;
                 }
-                const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+                const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
                 const response = await fetch(`${apiBaseUrl}/api/reminders`, {
                     headers: {

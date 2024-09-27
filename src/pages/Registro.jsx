@@ -11,7 +11,7 @@ export default function Registro() {
   const [success, setSuccess] = useState('');
   const navigate = useNavigate();
 
-  const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
 
   const handleRegister = async (e) => {
     e.preventDefault();
