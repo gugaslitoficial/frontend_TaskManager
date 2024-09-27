@@ -19,6 +19,8 @@ export default function Home() {
     const [currentDate, setCurrentDate] = useState('');
     const [reminders, setReminders] = useState<any[]>([]);
 
+    const apiBaseUrl = process.env.API_BASE_URL;
+
     const navigate = useNavigate();
 
     const handleAddEventClick = () => {
@@ -34,7 +36,7 @@ export default function Home() {
                 if (!token) {
                     return navigate('/'); // Redireciona para login se o token não existir
                 }
-                const response = await fetch('http://localhost:3001/api/user', {
+                const response = await fetch(`${apiBaseUrl}/api/user`, {
                     method: 'GET',
                     headers: {
                         Authorization: `Bearer ${token}`,
@@ -86,7 +88,7 @@ export default function Home() {
                 return;
             }
 
-            const response = await fetch('http://localhost:3001/api/reminders', {
+            const response = await fetch(`${apiBaseUrl}/api/reminders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -134,7 +136,7 @@ export default function Home() {
                 return;
             }
         
-            const response = await fetch(`http://localhost:3001/api/reminders/search?title=${query}`, {
+            const response = await fetch(`${apiBaseUrl}/api/reminders/search?title=${query}`, {
                 method: 'GET',
                 headers: {
                     Authorization: `Bearer ${token}`,

@@ -9,10 +9,12 @@ export default function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
+  const apiBaseUrl = process.env.API_BASE_URL;
+
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3001/api/login', {
+      const response = await fetch(`${apiBaseUrl}/api/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

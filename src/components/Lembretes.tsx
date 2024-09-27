@@ -13,6 +13,8 @@ interface Reminder {
 export default function Lembretes() {
     const [reminders, setReminders] = useState<Reminder[]>([]);
 
+    const apiBaseUrl = process.env.API_BASE_URL;
+
     useEffect(() => {
         const fetchReminders = async () => {
             try {
@@ -22,7 +24,7 @@ export default function Lembretes() {
                     return;
                 }
 
-                const response = await fetch('http://localhost:3001/api/reminders', {
+                const response = await fetch(`${apiBaseUrl}/api/reminders`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -52,7 +54,7 @@ export default function Lembretes() {
                 return;
             }
 
-            const response = await fetch(`http://localhost:3001/api/reminders/${id}`, {
+            const response = await fetch(`${apiBaseUrl}/api/reminders/${id}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,

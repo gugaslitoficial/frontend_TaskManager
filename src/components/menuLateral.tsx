@@ -27,6 +27,8 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
     const [popupVisible, setPopupVisible] = useState(false);
     const [popupPosition, setPopupPosition] = useState<{ top: number; left: number } | null>(null);
 
+    const apiBaseUrl = process.env.API_BASE_URL;
+
     const fetchUserImage = async () => {
         try {
             const token = localStorage.getItem('accessToken');
@@ -35,7 +37,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                 return;
             }
 
-            const response = await fetch('http://localhost:3001/api/user/image', {
+            const response = await fetch(`${apiBaseUrl}/api/user/image`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -72,7 +74,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                 return;
             }
 
-            const response = await fetch('http://localhost:3001/api/user/upload-image', {
+            const response = await fetch(`${apiBaseUrl}/api/user/upload-image`, {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -104,7 +106,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                     return;
                 }
 
-                const response = await fetch('http://localhost:3001/api/reminders', {
+                const response = await fetch(`${apiBaseUrl}/api/reminders`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -145,7 +147,7 @@ export default function MenuLateral({ setActiveComponent }: MenuLateralProps) {
                 return;
             }
 
-            const response = await fetch(`http://localhost:3001/api/reminders/${id}`, {
+            const response = await fetch(`${apiBaseUrl}/api/reminders/${id}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,

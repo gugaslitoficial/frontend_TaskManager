@@ -21,6 +21,8 @@ export default function CalendarComponent() {
     const [events, setEvents] = useState<{ [key: string]: Reminder[] }>({});
     const [selectedDate, setSelectedDate] = useState<Value>(new Date());
 
+    const apiBaseUrl = process.env.API_BASE_URL;
+
     useEffect(() => {
         const fetchReminders = async () => {
             try {
@@ -30,7 +32,7 @@ export default function CalendarComponent() {
                     return;
                 }
 
-                const response = await fetch('http://localhost:3001/api/reminders', {
+                const response = await fetch(`${apiBaseUrl}/api/reminders`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
