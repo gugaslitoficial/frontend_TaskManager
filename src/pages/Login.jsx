@@ -9,7 +9,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const apiBaseUrl = process.env.API_BASE_URL;
+  const apiBaseUrl = process.env.REACT_APP_API_BASE_UR;
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -22,6 +22,8 @@ export default function Login() {
         body: JSON.stringify({ email, password }),
       });
 
+      console.log('Response Status:', response.status);
+
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem('accessToken', data.accessToken);
@@ -31,6 +33,7 @@ export default function Login() {
         setError(errorData.message || 'Login failed');
       }
     } catch (error) {
+      console.error('Fetch error:', error);
       setError('Erro de rede. Tente novamente.');
     }
   };
