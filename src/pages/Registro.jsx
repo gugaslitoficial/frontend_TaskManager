@@ -18,7 +18,7 @@ export default function Registro() {
 
     console.log('API Base URL:', apiBaseUrl);
     try {
-      const response = await fetch(`http://localhost:3001/api/register`, {
+      const response = await fetch(`${apiBaseUrl}/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
