@@ -43,11 +43,12 @@ export default function CalendarComponent() {
                     // Organizar lembretes por data
                     const eventsMap: { [key: string]: Reminder[] } = {};
                     data.forEach((reminder: Reminder) => {
-                        const date = new Date(reminder.date).toISOString().split('T')[0]; // Converte a data para 'YYYY-MM-DD'
-                        if (!eventsMap[date]) {
-                            eventsMap[date] = [];
+                        const date = new Date(reminder.date);
+                        const localDate = date.toLocaleDateString('pt-BR');
+                        if (!eventsMap[localDate]) {
+                            eventsMap[localDate] = [];
                         }
-                        eventsMap[date].push(reminder);
+                        eventsMap[localDate].push(reminder);
                     });
                     setEvents(eventsMap);
                 } else {
@@ -68,7 +69,7 @@ export default function CalendarComponent() {
 
     const formatDate = (date: Date | Date[] | null): string => {
         if (date instanceof Date) {
-            return date.toISOString().split('T')[0]; // Retorna no formato 'YYYY-MM-DD'
+            return date.toLocaleDateString('pt-BR'); // Retorna no formato 'YYYY-MM-DD'
         }
         return '';
     };
