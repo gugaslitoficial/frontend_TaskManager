@@ -9,7 +9,7 @@ export default function Login() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+  const apiBaseUrl = "https://backend-taskmanager-x0d7.onrender.com";
 
   const handleLogin = async (e) => {
     e.preventDefault();
